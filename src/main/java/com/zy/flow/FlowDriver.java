@@ -34,6 +34,9 @@ public class FlowDriver {
         FileInputFormat.setInputPaths(job, new Path("C:\\Users\\zy127\\Desktop\\hadoopFile\\telin"));
         FileOutputFormat.setOutputPath(job, new Path("C:\\Users\\zy127\\Desktop\\hadoopFile\\telout"));
 
+        job.setPartitionerClass(ProvincePartitioner.class);
+        job.setNumReduceTasks(5);
+
         //6. 提交
         boolean b = job.waitForCompletion(true);
         System.exit(b ? 0 : 1);
